@@ -1,0 +1,365 @@
+/* Define global styles for the entire page */
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Style the body of the page */
+body {
+    width: 100vw;
+    /* Set width to the full viewport width */
+    min-height: 100%;
+    /* Ensure a minimum height of the viewport */
+    position: relative;
+    /* Set relative positioning for absolute child elements */
+    padding-bottom: 9rem;
+    /* Add padding at the bottom of the page */
+    box-sizing: inherit;
+    /* Inherit box-sizing from the HTML element */
+    background-color: #13113C;
+    /* Background color */
+    color: white;
+    /* Text color */
+    font-family: 'Lato', sans-serif;
+    /* Font family */
+    margin: 10px;
+    /* Margin around the body */
+    display: flex;
+    /* Use flexbox for layout */
+    flex-direction: column;
+    /* Arrange content vertically */
+    justify-content: center;
+    /* Center content vertically */
+    align-items: center;
+    /* Center content horizontally */
+    text-align: center;
+    /* Center-align text */
+}
+
+/* Style heading level 1 */
+h1 {
+    text-align: center;
+    text-decoration: underline;
+    /* Add underline decoration */
+}
+
+/* Style anchor links */
+a {
+    color: white;
+    /* Text color for links */
+}
+
+/* Style anchor links on hover and active states */
+a:hover,
+a:active {
+    text-decoration: underline;
+    /* Add underline on hover/active */
+    color: yellow;
+    /* Text color on hover/active */
+    transition: 600ms;
+    /* Smooth transition effect */
+}
+
+/* Style the active navigation link */
+.menu .active-link {
+    border: 1px solid yellow;
+    /* Add border to active link */
+    border-radius: 5px;
+    /* Add rounded corners to active link */
+}
+
+/* Style the header */
+header {
+    width: 90vw;
+    /* Set header width to 90% of the viewport width */
+    border: 2px solid white;
+    /* Add border */
+    margin: 0 0 10px 0;
+    /* Margin on all sides except bottom */
+    padding: 10px;
+    /* Add padding */
+    box-sizing: border-box;
+    /* Include padding and border in width calculation */
+    font-size: 20px;
+    /* Set font size */
+}
+
+/* Style unordered lists */
+ul {
+    list-style: none;
+    /* Remove list bullets */
+    display: flex;
+    /* Use flexbox for layout */
+    flex-direction: row;
+    /* Arrange list items horizontally */
+    justify-content: space-evenly;
+    /* Distribute space between items */
+    padding: 0;
+    /* Remove default padding */
+    margin: 0;
+    /* Remove default margin */
+}
+
+/* Style list items */
+li {
+    padding: 5px 10px;
+    /* Add padding around list items */
+}
+
+/* Style the main content area */
+main {
+    min-height: calc(100vh - 150px);
+    /* Calculate minimum height based on viewport height */
+    width: 90vw;
+    /* Set width to 90% of the viewport width */
+}
+
+/* Style the dashboard element */
+.dashboard {
+    width: 90vw;
+    /* Set width to 90% of the viewport width */
+    height: 30vh;
+    /* Set height */
+    border: 3px solid white;
+    /* Add border */
+}
+
+/* Style the main content area again */
+main {
+    width: 50vw;
+    /* Set width to 50% of the viewport width */
+}
+
+/* Style containers for stocks and news */
+.stocks,
+.newsContainer {
+    width: 100%;
+    /* Set width to 100% */
+    border: 3px solid white;
+    /* Add border */
+    padding: 10px;
+    /* Add padding */
+    box-sizing: border-box;
+    /* Include padding and border in width calculation */
+}
+
+/* Style the stocks container */
+.stocks {
+    height: 50vh;
+    /* Set height */
+    margin: 10px 0;
+    /* Margin on top and bottom */
+}
+
+/* Style the news container */
+.newsContainer {
+    height: 50vh;
+    /* Set height */
+    margin: 10px 0;
+    /* Margin on top and bottom */
+}
+
+/* Style individual news items */
+.news-item {
+    background-color: #1E1E40;
+    /* Background color */
+    padding: 10px;
+    /* Add padding */
+    border-radius: 5px;
+    /* Add rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Add shadow */
+    margin-bottom: 10px;
+    /* Margin at the bottom of each item */
+}
+
+/* Style the image with class 'one' */
+.one {
+    width: 9vw;
+    /* Set width */
+    height: 5vh;
+    /* Set height */
+    border-radius: 10px;
+    /* Add rounded corners */
+}
+
+/* Add hover effect to the image with class 'one' */
+.one:hover {
+    border-radius: 20px;
+    /* Increase border radius on hover */
+    box-shadow: 1px 1px 9px yellow;
+    /* Add shadow on hover */
+    transition: 600ms;
+    /* Smooth transition effect */
+    cursor: pointer;
+    /* Change cursor on hover */
+    border-color: white;
+    /* Change border color on hover */
+}
+
+
+/* Style images */
+img {
+    width: 450px;
+    /* Set a specific width */
+    height: 250px;
+    /* Set a specific height */
+}
+
+/* Style paragraph elements */
+p {
+    margin: 6px 0 4px 0;
+    /* Margin settings */
+}
+
+/* Style the footer */
+footer {
+    text-align: center;
+    /* Center-align text */
+    position: absolute;
+    /* Position at the bottom of the viewport */
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+/* Style pagination links */
+.pagination a {
+    color: white;
+    /* Text color for pagination links */
+    padding: 8px 16px;
+    /* Add padding */
+    text-decoration: none;
+    /* Remove text decoration */
+    transition: background-color .3s;
+    /* Smooth transition effect */
+}
+
+/* Style the active pagination link */
+.pagination a.active {
+    background-color: dodgerblue;
+    /* Background color for active link */
+    color: white;
+    /* Text color for active link */
+}
+
+/* Style pagination links on hover (excluding active link) */
+.pagination a:hover:not(.active) {
+    background-color: black;
+    /* Background color on hover */
+}
+
+/* Media queries for different screen sizes */
+
+/* Media query for screens with a maximum width of 567px */
+@media (max-width: 567px) {
+    ul {
+        list-style: none;
+        /* Remove list bullets */
+        display: flex;
+        /* Use flexbox for layout */
+        flex-direction: column;
+        /* Arrange list items vertically */
+        justify-content: space-evenly;
+        /* Distribute space between items */
+        padding: 0;
+        /* Remove default padding */
+        margin: 0;
+        /* Remove default margin */
+    }
+
+    /* Adjust the image with class 'one' for smaller screens */
+    .one {
+        width: 9vw;
+        /* Set width */
+        height: auto;
+        /* Auto height to maintain aspect ratio */
+    }
+}
+
+/* Media query for screens with a maximum width of 767px */
+@media (max-width: 767px) {
+    header {
+        font-size: 17px;
+        /* Reduce font size */
+    }
+
+    main {
+        min-height: calc(100vh - 200px);
+        /* Calculate minimum height */
+    }
+
+    /* Adjust images for smaller screens */
+    img {
+        width: 9vw;
+        /* Set width */
+        height: auto;
+        /* Auto height to maintain aspect ratio */
+    }
+
+    ul {
+        list-style: none;
+        /* Remove list bullets */
+        display: flex;
+        /* Use flexbox for layout */
+        flex-direction: column;
+        /* Arrange list items vertically */
+        justify-content: space-evenly;
+        /* Distribute space between items */
+        padding: 0;
+        /* Remove default padding */
+        margin: 0;
+        /* Remove default margin */
+    }
+}
+
+/* Media query for screens with a minimum width of 768px and a maximum width of 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+    header {
+        font-size: 20px;
+        /* Increase font size */
+    }
+
+    ul {
+        list-style: none;
+        /* Remove list bullets */
+        display: flex;
+        /* Use flexbox for layout */
+        flex-direction: column;
+        /* Arrange list items vertically */
+        justify-content: space-evenly;
+        /* Distribute space between items */
+        padding: 0;
+        /* Remove default padding */
+        margin: 0;
+        /* Remove default margin */
+    }
+}
+
+/* Additional media queries for larger screens (adjust as needed) */
+@media (min-width: 1024px) {
+    header {
+        font-size: 20px;
+        /* Adjust font size for larger screens */
+    }
+
+    main {
+        min-height: calc(100vh - 250px);
+        /* Calculate minimum height */
+        display: flex;
+        /* Use flexbox for layout */
+        flex-direction: row;
+        /* Arrange content horizontally */
+    }
+
+    /* Adjust the height of the dashboard element */
+    .dashboard {
+        height: 40vh;
+    }
+
+    /* Adjust the height and margin of the stocks container */
+    .stocks {
+        height: 60vh;
+        margin: 10px;
+    }
+}

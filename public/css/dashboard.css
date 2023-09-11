@@ -1,0 +1,389 @@
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    min-height: 100%;
+    position: relative;
+    margin: 0;
+    padding-bottom: 22rem;
+    box-sizing: inherit;
+    background-color: #13113C;
+    font-family: 'Lato', sans-serif;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+
+
+header {
+    width: 100vw;
+    border: 2px solid white;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+main {
+    width: 90vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+img {
+    width: 9vw;
+    height: 5vh;
+    border-radius: 10px;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+li {
+    padding: 5px 10px;
+}
+
+
+/* Style for the pie chart */
+.ch {
+    width: 500px;
+    height: 260px;
+
+}
+
+/* Style for the stock list and table sections */
+
+.container2 {
+    width: 60vw;
+
+    border-radius: 10px;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-start;
+
+    color: black;
+    padding: 10px 5px 10px 3px;
+
+
+}
+
+
+.space-top {
+    margin-top: 10px;
+
+}
+
+section,
+.two {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* Style for the active navigation link */
+.menu .active-link {
+    border: 1px solid yellow;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+
+
+.container3 {
+    width: 50vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    margin: 10px;
+}
+
+.content-section {
+    width: 60vw;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 10px;
+    align-items: flex-start;
+    background-color: white;
+    gap: 5px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.table-section {
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    width: 60vw;
+}
+
+
+h1 {
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+
+.container2 {
+    /* ... existing styles ... */
+    position: relative;
+    /* Add relative positioning */
+}
+
+.question-mark {
+    position: top;
+    top: 0;
+    right: 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.explanation {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 200px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.question-mark:hover+.explanation {
+    display: block;
+}
+
+h2 {
+    margin-top: 20px;
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: aliceblue;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+    text-align: center;
+}
+
+
+#btn {
+    color: white;
+    background-color: #4CAF50;
+}
+
+
+
+button {
+    background-color: #d9534f;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #c9302c;
+    transition: 600ms;
+    border-radius: 10px;
+}
+
+a {
+    color: white;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: yellow;
+    transition: 600ms;
+}
+
+
+
+footer {
+    text-align: center;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.pagination a {
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+.pagination a.active {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: black;
+}
+
+/* Style for the ul with suggestions */
+#suggestions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    background-color: white;
+
+
+    max-height: 7 0px;
+    overflow-y: auto;
+    width: 100%;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#suggestions li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+#suggestions li:hover {
+    background-color: #f0f0f0;
+}
+
+
+img:hover {
+    border-radius: 20px;
+    box-shadow: 1px 1px 9px yellow;
+    transition: 600ms;
+    cursor: pointer;
+    border-color: white;
+}
+
+.alert {
+    background-color: #d9edf7;
+    border: 1px solid #bce8f1;
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.alert .message {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.alert .button {
+    background-color: #28a745;
+    border: none;
+    color: #ffffff;
+    padding: 10px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.alert .button:hover {
+    background-color: #1d9138;
+}
+
+
+
+
+@media (max-width: 990px) {
+    ul {
+        list-style: none;
+        /* Remove list bullets */
+        display: flex;
+        /* Use flexbox for layout */
+        flex-direction: column;
+        /* Arrange list items vertically */
+        justify-content: space-evenly;
+        /* Distribute space between items */
+        padding: 0;
+        /* Remove default padding */
+        margin: 0;
+        /* Remove default margin */
+    }
+
+    .content-section {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 650px) {
+    body {
+        text-align: center;
+    }
+
+    ul {
+        flex-direction: column;
+    }
+
+    .content-section {
+        flex-direction: column;
+    }
+
+    th {
+        padding: 0;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    button {
+        padding: 2px 6px;
+        ;
+    }
+
+    ul {
+        list-style: none;
+        /* Remove list bullets */
+        display: flex;
+        /* Use flexbox for layout */
+        flex-direction: column;
+        /* Arrange list items vertically */
+        justify-content: space-evenly;
+        /* Distribute space between items */
+        padding: 0;
+        /* Remove default padding */
+        margin: 0;
+        /* Remove default margin */
+    }
+}
