@@ -81,8 +81,11 @@ function fetchData() {
         .then(data => {
             if (data.annualReports && data.annualReports.length > 0) {
                 const revenueData = data.annualReports.map(report => report.totalRevenue / 1000000000);
+                // shows revenue the compnay has divided by 1000000000 to convert data provided by alpha
+                // vantage api into bilions for better comprehension
                 const netProfitData = data.annualReports.map(report => report.netIncome / 1000000000);
-
+// shows profit the compnay has divided by 1000000000 to convert data provided by alpha
+                // vantage api into bilions for better comprehension
                 createOrUpdateChart(data, revenueData, netProfitData);
             } else {
                 alert('No financial data found for the specified company symbol.');
@@ -95,8 +98,14 @@ function fetchData() {
 
 // Function to create or update a chart displaying revenue and net profit data
 function createOrUpdateChart(data, revenueData, netProfitData) {
+    // passes revenue data from variable into the chart.
     const ct = document.getElementById('stockChart1').getContext('2d');
     const years = data.annualReports.map(report => report.fiscalDateEnding.split('-')[0]);
+    // The split() method in JavaScript splits the string into an array of words, where each word is separated by a delimiter.
+    // The delimiter in this case is the hyphen (-). The [0] index of the array returned by split() 
+    // in this case to get the last 5 years of data
+
+
 
     chart = new Chart(ct, {
         type: 'bar',
