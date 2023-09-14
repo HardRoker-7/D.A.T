@@ -125,9 +125,12 @@ function createOrUpdateChart(data, revenueData, netProfitData) {
         options: {
             maintainAspectRatio: false,
             scales: {
-                y: {
-                    beginAtZero: true
-                }
+                  y: {
+                    display: true,
+                    title: {
+                        display: true,
+                        text: '(USD)Billions'
+                    }
             }
         }
     });
@@ -256,12 +259,12 @@ function createBarChart(data, cash, longTermDebt, commonStockShares) {
             // This section specifies various options that customize the appearance and behavior of the chart.
             scales: {
                 // This sub-object configures the scales (axes) of the chart.
-                y: {
-                    // This specifies the Y-axis configuration.
-                    beginAtZero: true
-                    // This option ensures that the Y-axis starts at zero, which is common in bar charts to provide 
-                    // a meaningful visual comparison of values.
-                }
+                 y: {
+                    display: true,
+                    title: {
+                        display: true,
+                        text: '(USD)Billions'
+                    }
             },
             plugins: {
                 // This sub-object allows you to configure plugins for the chart. In this case, it's used to set the chart title.
