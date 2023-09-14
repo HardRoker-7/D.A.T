@@ -83,8 +83,8 @@ function fetchData() {
         .then(response => response.json())
         .then(data => {
             if (data.annualReports && data.annualReports.length > 0) {
-                const revenueData = data.annualReports.map(report => report.totalRevenue);
-                const netProfitData = data.annualReports.map(report => report.netIncome);
+                const revenueData = data.annualReports.map(report => report.totalRevenue / 1000000000);
+                const netProfitData = data.annualReports.map(report => report.netIncome / 1000000000);
 
                 createOrUpdateChart(data, revenueData, netProfitData);
             } else {
@@ -177,12 +177,12 @@ function getFinancialData() {
             if (data.annualReports && data.annualReports.length > 0) {
                 const companyName = data.symbol;
                 // data.symbol is used to retreive the stock symbol from the json response
-                const cash = data.annualReports.map(report => report.cashAndShortTermInvestments);
+                const cash = data.annualReports.map(report => report.cashAndShortTermInvestments / 1000000000);
                 // data.annualReports.map is used to map over api database response and retreive only the 
                 //    cashAndShortTermInvestments   from the json response
-                const longTermDebt = data.annualReports.map(report => report.longTermDebt);
+                const longTermDebt = data.annualReports.map(report => report.longTermDebt / 1000000000);
                 // same functionality here  only difference is that it asks for long term debt
-                const commonStockShares = data.annualReports.map(report => report.commonStockSharesOutstanding);
+                const commonStockShares = data.annualReports.map(report => report.commonStockSharesOutstanding / 1000000000);
                 // same functionality here  only difference is that it asks for commonStockSharesOutstanding
                 document.getElementById('companySymbolDisplay').textContent = `Company Symbol: ${companyName} (${companySymbol})`;
                 // adds new data from api such as company name and company symbol
