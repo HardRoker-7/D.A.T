@@ -1,5 +1,3 @@
-
-
 // Listen for a click event on an element with the id 'on' and execute functions when clicked
 document.getElementById('on').addEventListener('click', function () {
     fetchAndPlotData(); // Fetch and plot stock price data
@@ -13,8 +11,6 @@ document.getElementById('on1').addEventListener('click', function () {
     clearInput1(); // Clear input fields
     clearInput2(); // Clear input fields
 })
-
-
 
 // Stock suggestion functionality
 const apiKey = '6VWT72JNHHLBF3MH';
@@ -62,13 +58,14 @@ userInput.addEventListener('input', async () => {
     }
 });
 
-// Details of how code works explained in the cash, debt and common stock section only difference is
+// Details of how code works explained in the cash, debt, and common stock section only difference is
 // in the name of functions and variables
 
 const apiUrl = 'https://www.alphavantage.co/query?function=INCOME_STATEMENT&apikey=6VWT72JNHHLBF3MH';
 
-// let chart;
-// Function to fetch revenue and profit data from alpha vantage api
+let chart; // Declare chart variable
+
+// Function to fetch revenue and profit data from Alpha Vantage API
 function fetchData() {
     const companySymbolInput = document.getElementById('companySymbol');
     const companySymbol = companySymbolInput.value.toUpperCase();
@@ -92,7 +89,7 @@ function fetchData() {
             }
         })
         .catch(error => {
-            alert('Error fetching data:', error);
+            alert('Error fetching data: ' + error);
         });
 }
 
@@ -125,12 +122,13 @@ function createOrUpdateChart(data, revenueData, netProfitData) {
         options: {
             maintainAspectRatio: false,
             scales: {
-                  y: {
+                y: {
                     display: true,
                     title: {
                         display: true,
                         text: '(USD)Billions'
                     }
+                }
             }
         }
     });
@@ -150,8 +148,8 @@ function clearInput2() {
 
 // Functionality for fetching balance sheet data
 // getFinancialData(): This function fetches balance sheet data for
-//  a specified company symbol from the Alpha Vantage API.It constructs an API 
-//  request URL, makes a fetch request, processes the response data(cash, long - term debt, 
+//  a specified company symbol from the Alpha Vantage API. It constructs an API 
+//  request URL, makes a fetch request, processes the response data (cash, long-term debt, 
 //     and common stock shares), and then calls createBarChart() to create a bar chart displaying this financial data.
 function getFinancialData() {
     const apiUrl = 'https://www.alphavantage.co/query?function=BALANCE_SHEET&apikey=6VWT72JNHHLBF3MH';
@@ -167,30 +165,20 @@ function getFinancialData() {
     const apiQuery = `${apiUrl}&symbol=${companySymbol}`;
 
     fetch(apiQuery)
-        // fetches the api request 
         .then(response => {
             if (!response.ok) {
-                // if response is not fine then it will throw an error
                 throw new Error('Network response was not ok.');
             }
-            // if the response is positive it will respond with json input from databasse of api
             return response.json();
         })
         .then(data => {
             if (data.annualReports && data.annualReports.length > 0) {
                 const companyName = data.symbol;
-                // data.symbol is used to retreive the stock symbol from the json response
                 const cash = data.annualReports.map(report => report.cashAndShortTermInvestments / 1000000000);
-                // data.annualReports.map is used to map over api database response and retreive only the 
-                //    cashAndShortTermInvestments   from the json response
                 const longTermDebt = data.annualReports.map(report => report.longTermDebt / 1000000000);
-                // same functionality here  only difference is that it asks for long term debt
                 const commonStockShares = data.annualReports.map(report => report.commonStockSharesOutstanding / 1000000000);
-                // same functionality here  only difference is that it asks for commonStockSharesOutstanding
                 document.getElementById('companySymbolDisplay').textContent = `Company Symbol: ${companyName} (${companySymbol})`;
-                // adds new data from api such as company name and company symbol
                 createBarChart(data, cash, longTermDebt, commonStockShares);
-                // creates a function which passes in all the parameters cash and other parameters we entered above
             } else {
                 alert('No financial data found for the specified company symbol.');
             }
@@ -204,51 +192,29 @@ function getFinancialData() {
 //  and common stock shares outstanding for multiple years. It uses the Chart.js library to create the bar chart.
 function createBarChart(data, cash, longTermDebt, commonStockShares) {
     const ctx1 = document.getElementById('financialChart').getContext('2d');
-    // This line retrieves a 2D drawing context (getContext('2d')) from a canvas element with the ID 'financialChart'. 
-    // In Chart.js, the canvas element is used as the rendering surface for the chart.
     const years = data.annualReports.map(report => report.fiscalDateEnding.split('-')[0]);
-    // : This line extracts the years from an array of annual reports. It assumes that the data object contains an
-    //  array called annualReports, and for each report, it extracts the year from the fiscalDateEnding property (presumably in the format 'YYYY-MM-DD').
 
     window.chart = new Chart(ctx1, {
-
-        // This line creates a new Chart.js chart instance using the canvas context 
-        // (ctx1) and configures its properties. The chart will be of type 'bar', meaning it will display data as vertical bars
-
         type: 'bar',
         data: {
-            // This block defines the data to be displayed in the chart. It includes three datasets: one for 'debt',common stocks available
-            //  and
-            //  another for 'cash'. Each dataset has data points, a label, and styling properties 
-            //  (such as background color and border color).
-
             labels: years,
-            // This specifies the labels (years) for the X-axis of the chart.
-
             datasets: [
-                // An array containing three objects, each representing a dataset (one for total cash,one for longterm debt 
-                //     and one for total common shares).
                 {
-                    label: 'Total cash',
-                    // label for total cash parameter
+                    label: 'Total Cash',
                     data: cash,
-                    // variable to collect cash data from api
                     backgroundColor: 'rgba(0, 179, 134, 1)',
-                    // background color of cash bar
                     borderColor: 'rgba(255, 99, 132, 1)',
-                    // color of cash bar
                     borderWidth: 1
-                    // width of borders
                 },
                 {
-                    label: 'longTermDebt',
+                    label: 'Long-Term Debt',
                     data: longTermDebt,
                     backgroundColor: 'rgba(0, 128, 255, 1)',
                     borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 1
                 },
                 {
-                    label: 'Total Shares',
+                    label: 'Common Stock Shares',
                     data: commonStockShares,
                     backgroundColor: 'rgba(204, 255, 0, 1)',
                     borderWidth: 1
@@ -256,24 +222,19 @@ function createBarChart(data, cash, longTermDebt, commonStockShares) {
             ]
         },
         options: {
-            // This section specifies various options that customize the appearance and behavior of the chart.
             scales: {
-                // This sub-object configures the scales (axes) of the chart.
-                 y: {
+                y: {
                     display: true,
                     title: {
                         display: true,
-                        text: '(USD)Billions'
+                        text: '(USD) Billions'
                     }
+                }
             },
             plugins: {
-                // This sub-object allows you to configure plugins for the chart. In this case, it's used to set the chart title.
                 title: {
-                    //  This specifies the title plugin configuration.
                     display: true,
-                    //  This indicates that the chart title should be displayed.
-                    text: 'Common Stock Shares Outstanding'
-                    // This sets the text for the chart title, which will be displayed at the top of the chart.
+                    text: 'Financial Data'
                 }
             }
         }
@@ -292,9 +253,7 @@ function clearInput1() {
     }
 }
 
-// Functionality for fetching and plotting stock price data made with information gleaned via
-// // js, C. (2023). How To Create Custom Legend For Doughnut Chart In Chart JS 4 Part 8. [online] 
-// www.youtube.com. Available at: https://www.youtube.com/watch?v=Fn2GBSMooW8 [Accessed 28 Aug. 2023]. 
+// Functionality for fetching and plotting stock price data
 async function fetchAndPlotData() {
     const apiKey = '6VWT72JNHHLBF3MH';
     const stockSymbol = document.getElementById('companySymbol').value.toUpperCase();
