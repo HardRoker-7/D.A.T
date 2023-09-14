@@ -175,9 +175,17 @@ function getFinancialData() {
             if (data.annualReports && data.annualReports.length > 0) {
                 const companyName = data.symbol;
                 const cash = data.annualReports.map(report => report.cashAndShortTermInvestments / 1000000000);
+                    // shows cash the compnay has divided by 1000000000 to convert data provided by alpha
+                // vantage api into bilions for better comprehension
                 const longTermDebt = data.annualReports.map(report => report.longTermDebt / 1000000000);
+                 // shows debt the compnay has divided by 1000000000 to convert data provided by alpha
+                // vantage api into bilions for better comprehension
                 const commonStockShares = data.annualReports.map(report => report.commonStockSharesOutstanding / 1000000000);
+                 // shows commonshares the compnay has divided by 1000000000 to convert data provided by alpha
+                // vantage api into bilions for better comprehension
                 document.getElementById('companySymbolDisplay').textContent = `Company Symbol: ${companyName} (${companySymbol})`;
+                 // displays company name and symbol
+               
                 createBarChart(data, cash, longTermDebt, commonStockShares);
             } else {
                 alert('No financial data found for the specified company symbol.');
@@ -202,6 +210,7 @@ function createBarChart(data, cash, longTermDebt, commonStockShares) {
                 {
                     label: 'Total Cash',
                     data: cash,
+                    // shows cash the compnay has
                     backgroundColor: 'rgba(0, 179, 134, 1)',
                     borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 1
@@ -224,6 +233,7 @@ function createBarChart(data, cash, longTermDebt, commonStockShares) {
         options: {
             scales: {
                 y: {
+                    // this code shows that all the data is represented in Billions of us Dollar on the y Axis
                     display: true,
                     title: {
                         display: true,
@@ -263,6 +273,7 @@ async function fetchAndPlotData() {
         const response = await fetch(apiUrl);
         const data = await response.json();
         const timeSeries = data['Monthly Time Series'];
+        // extracting time series data over multiple months from alpha vantage api to get data about stock price over 10 years.
 
         if (!timeSeries) {
             alert('Data not found for the given stock symbol. Please check the symbol or try again later.');
@@ -275,11 +286,14 @@ async function fetchAndPlotData() {
         const ctx = document.getElementById('stockChart').getContext('2d');
         new Chart(ctx, {
             type: 'line',
+            // defines the type of chart in this instance a line chart
             data: {
                 labels: dates,
                 datasets: [{
                     label: `${stockSymbol} Stock Price`,
+                    // label for stock price chart
                     data: stockPrices,
+                    // stock prices extracted by the map method from above for 10 years.
                     borderColor: 'rgb(75, 192, 192)',
                     fill: false
                 }]
@@ -290,6 +304,7 @@ async function fetchAndPlotData() {
                 title: {
                     display: true,
                     text: `${stockSymbol} Stock Price (Last 10 Years)`
+                    // this text shows the stock data in the last 10 years
                 },
                 scales: {
                     x: {
@@ -304,6 +319,7 @@ async function fetchAndPlotData() {
                         title: {
                             display: true,
                             text: 'Stock Price (USD)'
+                            // this code siplay sthe stock price as US dollars on the Y axis
                         }
                     }
                 }
