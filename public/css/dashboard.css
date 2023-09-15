@@ -468,7 +468,7 @@ footer {
  
 }
 
-@media (min-width)and (max-width: 650px) {
+@media (min-width: 356px)and (max-width: 650px) {
   
     header{
         width: 100vw;
@@ -478,13 +478,19 @@ footer {
     .content-section {
         flex-direction: column;
     }
-
-    th {
-        padding: 0;
+    table {
+        font-size: 12px; /* Reduce font size for smaller screens */
     }
 
-    table {
-        font-size: 12px;
+    th,
+    td {
+        padding: 4px; /* Reduce cell padding for smaller screens */
+    }
+
+
+    th:nth-child(4),
+    td:nth-child(4) {
+        text-align: center;
     }
 
     button {
